@@ -35,7 +35,7 @@ export const Todo = () => {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-12 text-center mt-4 mb-5">
-                        <img className='img-fluid' src="public/Image/To_Do_Image_2.png" alt="To DO List" />
+                        <img className='img-fluid' src="https://cdn-icons-png.flaticon.com/128/15198/15198197.png" alt="To DO List" />
                     </div>
 
                     <div className="col-md-7 col-12 mb-5 wrapper justify-content-center align-items-center">
