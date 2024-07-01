@@ -1,0 +1,85 @@
+img {
+    width: 80px;
+}
+
+input {
+    text-align: start;
+    width: 100%;
+    background-color: black;
+    padding: 20px; 
+    border: 3px solid #570E99;
+    color: #570E99;
+    font-size: 2rem;
+    border-radius: 50rem;
+    -webkit-border-radius: 50rem;
+    -moz-border-radius: 50rem;
+    -ms-border-radius: 50rem;
+    -o-border-radius: 50rem;
+    box-shadow: #570E99 0px 0px 0px 2px, #570E99 0px 4px 6px -1px, #570E99 0px 1px 0px inset;
+    text-shadow: 3px 3px 10px #570E99;
+}
+
+::placeholder {
+    color: #570E99;
+}
+
+.wrapper {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+}
+
+.plusBtn {
+    font-size: 1.8rem;
+    color: #570E99;
+    position: absolute; 
+    top: 37%; 
+    right: 40px; 
+    border: none; 
+    background-color: transparent; 
+    cursor: pointer; 
+}
+
+@media screen and (max-width : 400px) {
+    input {
+        font-size: 1.3rem;
+    }
+    .showItem {
+        gap: 1rem;
+    }
+}
+
+.showItem {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font-size: 2rem;
+    color: #570E99;
+    margin-bottom: 1.5rem;
+}
+
+.deleteBtn {
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #570E99;
+    color: black;
+    font-size: 1.5rem;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+button:hover {
+     background-color: black;
+     color: #570E99;
+     border : 3px solid #570E99;
+     font-weight: 600;
+}
