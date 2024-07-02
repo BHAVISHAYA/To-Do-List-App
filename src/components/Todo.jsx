@@ -1,29 +1,63 @@
 import React, { useState } from 'react'
 import "../App.css"
 import AddIcon from '@mui/icons-material/Add';
-import { SettingsInputAntenna, SettingsOutlined } from '@mui/icons-material';
+import { Task } from './Task';
+import { CurrencyLira, CurrencyRuble, Newspaper, SettingsInputAntenna } from '@mui/icons-material';
 
 export const Todo = () => {
 
     const [inputData, setInputData] = useState();
     const [items, setItems] = useState([]);
+    const [toggleBtn, setToggleBtn] = useState(true);
+    const [isEditItem, setIsEditItem] = useState();
 
     const inputEvent = (event) => {
         setInputData(event.target.value);
     }
 
     const addItems = () => {
-        if(inputData !== "") {
-            setItems([...items ,inputData]);
+        if(!inputData) {
+            alert("Please enter the task....");
+        }
+        else if(inputData && !toggleBtn) {
+            setItems(
+                items.map((currElem) => {
+                    if(currElem.id === isEditItem) {
+                        return {...currElem, name:inputData};
+                    }
+                    return currElem;
+                })
+            )
+            setToggleBtn(true);
+            setInputData("");
+            setIsEditItem(null);
+        }
+        else {
+            const allInputData = {
+                id : new Date().getTime().toString(),
+                name : inputData,
+            }
+            setItems([...items, allInputData]);
             setInputData("");
         }
     }
 
-    const deleteCurrItem = (id) => {
-        console.log(id);
-        setItems(items.filter((currItem, index) => {
-            return (index !== id);
+    const deleteCurrItem = (currTaskId) => {
+        console.log(currTaskId);
+        setItems(items.filter((currItem) => {
+            return (currItem.id !== currTaskId);
         }))
+    }
+
+    const editItem = (currTaskId) => {
+        console.log(currTaskId);
+        let newEditItem = items.find((currElem) => {
+            return (currElem.id === currTaskId);
+        })
+        console.log(newEditItem);
+        setToggleBtn(false);
+        setInputData(newEditItem.name);
+        setIsEditItem(currTaskId);
     }
 
     const allClear = () => {
@@ -46,26 +80,20 @@ export const Todo = () => {
                             value={inputData}
                             onChange={inputEvent}
                         />
-                        <i className="fa-solid fa-plus plusBtn" onClick={addItems}></i>
-                    </div>
+                        {
+                            toggleBtn === true ? 
+                            <i className="fa-solid fa-plus plusBtn" onClick={addItems}></i> : 
+                            <i className="fa-solid fa-pen-to-square plusBtn" onClick={addItems}></i> 
+                        }
 
-                    {/* <div className="col-7 showItem">
-                        <div className="item">
-                            <h1>  </h1>
-                        </div>
-                        <i className="fa-solid fa-trash-alt~ deleteBtn"></i>
-                    </div> */}
+                        
+                    </div>
 
                     {
                         items.map((currItem, index) => {
                             return (
                                 <>
-                                    <div className="col-md-7 col-12 showItem" key={index}>
-                                        <div className="item">
-                                            <h1> {currItem} </h1>
-                                        </div>
-                                        <i className="fa-solid fa-trash-alt deleteBtn" onClick={() => {deleteCurrItem(index)}}></i>
-                                    </div>
+                                    <Task key={currItem.id} onSelect={deleteCurrItem} onEdit={editItem} currTaskName={currItem.name} currTaskId={currItem.id}  id={index} />
                                 </>
                             )
                         })

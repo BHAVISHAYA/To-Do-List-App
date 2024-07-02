@@ -2,25 +2,32 @@ img {
     width: 80px;
 }
 
+:root {
+    --myColor: #FFC751;
+    /* color: #570E99; */
+}
+
+
+
 input {
     text-align: start;
     width: 100%;
     background-color: black;
     padding: 20px; 
-    border: 3px solid #570E99;
-    color: #570E99;
+    border: 3px solid var(--myColor);
+    color: var(--myColor);
     font-size: 2rem;
     border-radius: 50rem;
     -webkit-border-radius: 50rem;
     -moz-border-radius: 50rem;
     -ms-border-radius: 50rem;
     -o-border-radius: 50rem;
-    box-shadow: #570E99 0px 0px 0px 2px, #570E99 0px 4px 6px -1px, #570E99 0px 1px 0px inset;
-    text-shadow: 3px 3px 10px #570E99;
+    box-shadow: var(--myColor) 0px 0px 0px 2px, var(--myColor) 0px 4px 6px -1px, #570E99 0px 1px 0px inset;
+    text-shadow: 3px 3px 10px var(--myColor);
 }
 
 ::placeholder {
-    color: #570E99;
+    color: var(--myColor);
 }
 
 .wrapper {
@@ -32,13 +39,17 @@ input {
 
 .plusBtn {
     font-size: 1.8rem;
-    color: #570E99;
+    color: var(--myColor);
     position: absolute; 
     top: 37%; 
     right: 40px; 
     border: none; 
     background-color: transparent; 
     cursor: pointer; 
+}
+
+.plusBtn:hover {
+    color: rgb(40, 180, 40);
 }
 
 @media screen and (max-width : 400px) {
@@ -55,7 +66,7 @@ input {
     justify-content:space-between;
     align-items: center;
     font-size: 2rem;
-    color: #570E99;
+    color: var(--myColor);
     margin-bottom: 1.5rem;
 }
 
@@ -63,9 +74,17 @@ input {
     cursor: pointer;
 }
 
+.deleteBtn:hover {
+    color: crimson;
+}
+
+.editBtn:hover {
+    color: blue;
+}
+
 button {
     padding: 10px 20px;
-    background-color: #570E99;
+    background-color: var(--myColor);
     color: black;
     font-size: 1.5rem;
     border-radius: 40px;
@@ -79,7 +98,7 @@ button {
 
 button:hover {
      background-color: black;
-     color: #570E99;
-     border : 3px solid #570E99;
+     color: var(--myColor);
+     border : 3px solid var(--myColor);
      font-weight: 600;
 }
