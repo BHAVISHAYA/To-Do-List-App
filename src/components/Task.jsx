@@ -12,7 +12,6 @@ export const Task = (props) => {
                 <div className="item">
                     <h1> {currTaskName} </h1>
                 </div>
-                {/* <i className="fa-solid fa-trash-alt deleteBtn" onClick={() => {onSelect(id)}}></i> */}
                 <div className='buttons text-center'>
                     <EditTask onClear={onEdit} id={currTaskId} />
                     <DeleteTask onClear={onSelect} id={currTaskId} />

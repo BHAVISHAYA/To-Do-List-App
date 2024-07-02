@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../App.css"
 import AddIcon from '@mui/icons-material/Add';
 import { Task } from './Task';
@@ -6,8 +6,18 @@ import { CurrencyLira, CurrencyRuble, Newspaper, SettingsInputAntenna } from '@m
 
 export const Todo = () => {
 
+    const getLocalItems = () => {
+        let list = localStorage.getItem("lists");
+        console.log(list);
+        if(list) {
+            return JSON.parse(localStorage.getItem("lists"));
+        } {
+            return [];
+        }
+    }
+
     const [inputData, setInputData] = useState();
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(getLocalItems());
     const [toggleBtn, setToggleBtn] = useState(true);
     const [isEditItem, setIsEditItem] = useState();
 
@@ -60,9 +70,14 @@ export const Todo = () => {
         setIsEditItem(currTaskId);
     }
 
-    const allClear = () => {
+    const allClear = () =>   {
         setItems([]);
     }
+
+    //* Add Data To Local Storage :- 
+    useEffect(() => {
+        localStorage.setItem("lists", JSON.stringify(items));
+    }, [items]); 
 
     return (
         <>
